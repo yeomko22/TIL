@@ -19,3 +19,8 @@ $ systemctl restart NetworkManager
 $ ip add를 치면 입력한 ip 주소가 보여야함
 $ ping 게이트웨이 ip를 통해 서버가 네트워크 통신을 하는지 확인
 ```
+
+### 가상머신 DNS 서버 IP 입력
+```
+$ vi /etc/resolv.conf
+```
