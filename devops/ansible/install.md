@@ -22,5 +22,17 @@ $ ping 게이트웨이 ip를 통해 서버가 네트워크 통신을 하는지 �
 
 ### 가상머신 DNS 서버 IP 입력
 ```
-$ vi /etc/resolv.conf
+$ vi /etc/resolv.conf -> KT 공개 DNS 서버 주소 입력, 168.126.63.1
+$ ping google.com을 통해서 DNS 서버를 제대로 이용하는지 확인
+$ yum repolist를 통해서 저장소 목록을 제대로 읽어오는지 확인
+$ yum install epel-release -y (ansible 패키지를 담고 있는 저장소를 추가해주는 작업)
+$ yum install ansible
 ```
+### Ansible 기본 사용
+```
+$ ansible all -m ping -k
+$ vi /etc/ansible/hosts -> 통신하고자 하는 노드들의 IP 주소 값을 입력함
+$ ansible all -m ping -k
+```
+이 떄 host key 교환 에러가 뜨는데 이는 /etc/ansible/ansible.cfg 에서   
+host_key_checking = false 부분 주석을 해제해주면 해결
