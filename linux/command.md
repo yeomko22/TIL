@@ -8,3 +8,12 @@ $ touch
 $ yum list | grep '라이브러리명'
 ```
 yum을 통해서 설치한 패키지가 제대로 깔려있는지 확인하는 명령어
+
+```
+# nginx 프로세스가 잘 살아있는지 확인
+$ systemctl status nginx
+
+# firewall process 종료
+$ systemctl stop firewalld
+```
+
