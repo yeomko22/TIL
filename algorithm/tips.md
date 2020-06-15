@@ -15,3 +15,8 @@
 C++에서 숫자를 다룰 때에는 자료형에 유의할 것. long long으로 처리해야만 에러가 발생하지 않는다. 
 powl을 사용하여 큰 수의 제곱을 구할 수 있다.
 sqrt로 제곱근을 구할 수 있다.
+
+### c++ algorithm 유용한 기능들
+int min_value = *min_element(arr.begin(), arr.end());
+int pos = find(answer.begin(), answer.end(), min_value) - answer.begin();
+answer.erase(answer.begin() + pos);
