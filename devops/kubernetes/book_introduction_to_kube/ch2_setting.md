@@ -8,4 +8,7 @@
 $ ssh {호스트 명 ex. instance-3} hostname
 ```
 
-### kubespray
+### kubespray sample
+- group_vars: 클러스터 설치에 필요한 설정 내용
+- inventory.ini: 설치 대상 서버들의 정보를 설정
+
