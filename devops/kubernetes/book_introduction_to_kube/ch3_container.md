@@ -31,3 +31,8 @@ kubernetes-dashboard        ClusterIP   10.233.31.158   <none>        443/TCP   
 ```
 $ kubectl port-forward svc/echoserver 8080:8080
 ```
+
+```
+// 실행중인 파드의 로그 수집 시 사용
+$ kubectl logs -f {파드 이름}
+```
