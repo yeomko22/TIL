@@ -136,4 +136,22 @@ $ minikube ip
 
 ### kubernetes deploy detail
 ![kube_deploy_details](../../../images/kube_deploy_details.png)
+- yaml 파일을 만들고 master에 넘긴다.
+- master에는 kube-apiserver 프로세스가 있으며, 이는 현재 모든 노드들의 상태와 제대로 동작하는 지를 모니터링한다.
+- kube-apiserver가 yaml 파일을 검사한 뒤, responsibility를 업데이트한다.
+- 맞춰줘야할 상태를 현재 충족하지 못하면 노드들을 살펴보고 적당한 노드를 골라잡아서 팟을 띄운다.
+- 각각의 노드 안에 동작하고 있는 도커 데몬들은 이를 수신해서 도커 허브 상의 이미지를 받아와서 컨테이너를 띄우게 되는 것
+- 그 결과로 responsibility를 모두 충족하게끔 만들며 이를 선언적 API라고 한다.
+
+### Important Takeaways
+- 쿠버네티스는 컨테이너화 된 어플리케이션을 배포하는 시스템이다.
+- 노드들은 컨테이너를 실행하는 각각의 머신들이다.
+- 마스터는 노드들을 관리하는 프로그램들을 실행하는 머신이다.
+- 쿠버네티스는 이미지를 빌드하지 않는다.
+- 쿠버네티스는 각 컨테이너를 어디서 실행시킬 지를 결정한다. 각 노드들은 성격이 다른 컨테이너들을 실항할 수도 있다.
+- 무언가를 배포하려면 config file을 통해서 마스터의 상태를 변경시켜 주어야한다.
+- 마스터는 desired state를 맞추기 위해서 끊임없이 동작한다.
+- 일일이 어떻게 하라고 명령을 하는 것이 아니라, 만족시켜야하는 상태를 알려주고 마스터가 이를 알아서 맞춰줌. 전자를 Impertative라 하고 후자를 Declarative라고 한다.
+- kubernetes를 imperative하게 쓸 수 있긴 하지만 그다지 바람직하지 못하다. declarative하게 사용하는 것이 쿠버네티스의 장점을 십분 활용할 수 있다.
+
 
