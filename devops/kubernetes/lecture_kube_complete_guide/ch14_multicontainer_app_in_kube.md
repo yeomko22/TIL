@@ -76,5 +76,6 @@ spec:
 - API 키, DB 비밀번호와 같은 민감한 정보들을 담을 수 있는 서비스
 - 이 부분은 imperative하게 진행할 수 밖에 없다.
 ```
-$ kubectl create secret generic <secret_name> --from-literal
+$ kubectl create secret generic <secret_name> --from-literal key=value
+ex) kubectl create secret generic PGPASSWORD --from-literal PGPASSWORD=postgrespassword
 ```
