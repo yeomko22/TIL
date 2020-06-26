@@ -17,7 +17,7 @@
   - 노드의 kube-proxy는 마스터와 달리 컨테이너가 아니라 서버 프로세스로 실행 가능
 
 ### 쿠버네티스 주요 컴포넌트
-- 마스터용 컴포넌트: etcd, kube-apiserver, kube-scheduler, kube-controller-manager, cloud-controller-manater
+- 마스터용 컴포넌트: etcd, kube-apiserver, kube-scheduler, kube-controller-manager, cloud-controller-manager
 - 노드용 컴포넌트: kubelet, kube-proxy, container-runtime
 - 애드온 컴포넌트: networking-addon, dns-addon, dashboard-addon, resource-monitoring-addon
 
