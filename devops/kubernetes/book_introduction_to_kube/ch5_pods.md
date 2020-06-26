@@ -37,7 +37,27 @@
 - 특정 노드의 리소스는 남고, 특정 노드의 리소스는 부족한 상황이 발생 가능
 - 파드 설정 시에 파드 안의 각 컨테이너가 CPU와 메모리를 얼마나 사용할 수 있을지 지정 가능
 - yaml 파일에서 limits와 requests 옵션을 지정해서 설정이 가능함
-- spec.containers[].resources.limits.cpu
-- spec.containers[].resources.limits.memory
-- spec.containers[].resources.requests.cpu
-- spec.containers[].resources.requests.memory
+- spec.containers[].resources.limits.cpu: 최대 사용 가능량
+- spec.containers[].resources.limits.memory: 최대 사용 가능량
+- spec.containers[].resources.requests.cpu: 최소 자원 요구량
+- spec.containers[].resources.requests.memory: 최소 자원 요구량
+
+- requests에 적혀있는 요구량을 만족하는 노드에 파드를 스케쥴링 함
+- 만일 requests를 만족하는 노드가 없다면 파드는 pending 상태로 넘어가지 못함
+- limits는 특정 컨테이너의 리소스 사용량을 제한하는 필드로 노드 안의 리소스를 특정 컨테이너가 모두 가져가는 것을 예방
+
+### 파드 구성 패턴
+- 사이트카 패턴
+  - 원래 사용하려던 기본 컨테이너의 기능을 확장하는 용도로 컨테이너를 추가
+  - 웹 서버 컨테이너가 들은 파드에 로그 수집 컨테이너를 추가하고, 파일 시스템을 통해서 데이터 전달
+- 앰버서더 패턴
+  - 파드 안에 프록시 역할을 하는 컨테이너를 추가
+  - 외부 세계와의 연결은 프록시가 처리, 원래의 웹 서버는 프록시하고만 통신
+  - 이는 서비스 메쉬용 오픈 소스인 Istio에서 사용
+- 어댑터 패턴
+  - 파드 외부로 노출되는 정보를 표준화하는 어댑터 컨테이너를 사용
+  - 어댑터 컨테이너로 파드의 모니터링 지표를 표준화한 형식으로 노출
+  - 외부의 모니터링 시스템에서 해당 데이터를 주기적으로 가져가서 모니터링하는데 이용
+  - 이는 모니터링 오픈 소스인 프로메테우스에서 사용
+
+
