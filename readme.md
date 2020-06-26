@@ -8,3 +8,4 @@
 ### TIL을 통해 공부한 내용들
 - Ansible 기초 강의 완강
 - 쉽게 배우는 네트워크 완독 및 내용 정리
+- docker and kubernetes 강의 완강
