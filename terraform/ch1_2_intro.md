@@ -20,3 +20,7 @@ $ terraform console
 ```
 $ terraform init
 ```
+
+### AMI란?
+- AWS Machine Image의 약자로 소프트웨어 구성이 기재된 템플릿
+- AMI에서 인스턴스를 바로 시작 가능
