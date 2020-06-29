@@ -40,6 +40,3 @@ Limit aount of resources used per process.
 
 ### How's docker running on your computer?
 namespacing과 cgroup은 linux의 기능이다. 그렇다면 윈도우나 맥에서는 어떻게 동작하는가? linux virtual machine 위에서 linux kernel이 동작하고 이 커널 위에서 여러 프로세스를 돌린다.
-
-
-
