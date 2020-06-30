@@ -34,3 +34,9 @@ env:
         name: config-dev-secret
         key: DB_PASSWORD
 ```
+<<<<<<< Updated upstream
+=======
+- 이 외에도 시크릿을 프라이빗 이미지를 pull 받을때 사용할 수도 있음
+- HTTPS 인증서를 저장하는 용도로도 시크릿 사용이 가능함
+
+>>>>>>> Stashed changes
