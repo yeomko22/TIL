@@ -148,6 +148,7 @@ exit 0
 ```
 
 ### printf
+- c 언어에서처럼 printf를 사용 가능함
 ```
 #!/bin/sh
 var1=100.5
