@@ -55,3 +55,10 @@
 ### 반환
 - 사용이 끝난 PVC는 삭제되고 PVC 사용하던 PV를 초기화
 - 초기화 정책으로 Retain, Delete, Recycle이 있다.
+
+### PV 상태
+- pv를 생성하면 다음과 같은 상태를 확인할 수 있다.
+- available: PCV가 가져가서 사용할 수 있도록 미리 만들어져있는 상태
+- bound: 특정 PVC와 매핑되어 사용되고 있는 상태
+- released: PVC는 삭제되었고 PV는 아직 초기화 되지 않은 상태
+- failed: 자동 초기화 실패 상태
