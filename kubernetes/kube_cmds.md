@@ -22,3 +22,8 @@ $ kubectl get pv
 
 ### kubectl 부가 기능
 - docker logs, docker exec 등과 같은 기능들을 kubectl 명령어를 통해서 수행할 수 있다.
+
+### service fullname 알아내기
+```
+
+```
