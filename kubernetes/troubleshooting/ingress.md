@@ -14,3 +14,14 @@ spec:
         paths:
           - path: /upload(/|$)(.*)
 ```
+### GKE ingress 문제
+- GKE 상에서 ingress를 사용하려면 ingress-nginx를 먼저 설치해야한다.
+- 이는 GCP loadbalancer를 통해 쿠버네티스 내부로 트래픽을 전달하는 입구역할을 한다.
+- 이 때 설치와 삭제를 반복하면서 ingress service가 적용이 안되는 현상이 발생하였다.
+
+```
+$ helm list
+$ helm delete <release-name>
+$ helm repo add nginx-stable https://helm.nginx.com/stable
+$ helm install nginx-ing nginx-stable/nginx-ingress
+```
