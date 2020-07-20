@@ -20,3 +20,9 @@ sqrt로 제곱근을 구할 수 있다.
 int min_value = *min_element(arr.begin(), arr.end());
 int pos = find(answer.begin(), answer.end(), min_value) - answer.begin();
 answer.erase(answer.begin() + pos);
+
+### 예외 처리
+문제 풀이를 시작할 때부터 인풋값 범위 확인, 비어있는 인풋, 0으로 구성된 인풋, 짧은 인풋 등에 대한 예외처리를 진행해 줄 것
+
+### 최소값
+answer 같은 값의 최소값을 설정할 때에는 0으로 하지말고 반드시 limits.h를 include한 다음, INT_MIN 혹은 LLONG_MIN 같은 값으로 설정해줘야한다.
