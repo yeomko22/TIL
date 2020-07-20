@@ -1,3 +1,4 @@
+// answer를 0으로 설정해서 정답이 음수인 경우를 틀림
 #include <algorithm>
 #include <iostream>
 #include <limits.h>
