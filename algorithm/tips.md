@@ -124,3 +124,18 @@ def solution(A):
         return -1
     return A.index(dominator)
 ```
+### 가장 큰 부분합
+```
+#include <algorithm>
+
+int solution(vector<int> &A) {
+    int maxSum = A[0];
+    int subSum = A[0];
+    for (unsigned int i=1; i<A.size(); i++) {
+        subSum = max(subSum + A[i], A[i]);
+        maxSum = max(maxSum, subSum);
+    } 
+    return maxSum;
+}
+```
+단순한 dp 문제였으며, 혼자서 너무 어렵게 생각해서 안풀렸던 듯
