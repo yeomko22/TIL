@@ -17,3 +17,8 @@ $ systemctl status nginx
 $ systemctl stop firewalld
 ```
 
+```
+$ netstat -natulp | grep <포트명>
+```
+- 특정 포트에서 동작하는 프로세스 확인, 쿠버네티스 커스텀 스케쥴러 포트 확인할 때에 비어있는 포트 확인하기 위해서 사용한 명령어
+

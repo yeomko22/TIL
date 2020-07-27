@@ -36,3 +36,35 @@ $ kubectl expose pod nginx --port=80 --name nginx-service --type=NodePort --dry-
 
 $ kubectl create service nodeport nginx --tcp=80:80 --node-port=30080 --dry-run=client -o yaml
 ```
+```
+$ kubectl run httpd --image=httpd:alpine --port=80 --expose
+```
+- 파드, 클러스터ip 생성하고 포트 노출
+
+- 배포된 파드의 구성을 yaml 파일로 출력하기
+```
+$ kubectl get pods <파드 이름> -o yaml >> result.yaml
+```
+
+- 모든 네임스페이스에 대해서 오브젝트를 조회하려면 --all-namespaces 옵션을 추가한다.
+```
+$ kubectl get daemonsets --all-namespaces
+```
+- kubernetes 마스터 노드에서 워커 노드 ssh 접속하기
+```
+$ ssh <워커 노드 내부 ip>
+```
+- 각 워커 노드의 kubelet 설정 파일 위치
+```
+// 아래 파일에서 staticPodPath 옵션을 확인할 것
+/var/lib/kubelet/config.yaml
+```
+
+```
+$ cd /etc/systemd/system/kubelet.service.d
+$ cat 10-kubeadm.conf
+// KUBELET_CONFIG_ARGS=--config=/var/lib/kubelet/config.yaml
+$ grep -i static /var/lib/kubelet/config.yaml
+// staticPodPath를 알아낼 수 있음
+
+```
