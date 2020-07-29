@@ -34,3 +34,14 @@
 ### 네이밍 컨벤션
 - 공개키는 pem, crt로 사용함. server.crt, server.pem 등
 - 개인키는 key, -key.pem을 사용함
+- csr: Certificate Signing Request, CA의 인증을 받지 못한 공개키 
+- crt: Certificate 줄임말, CA의 싸인을 포함한 공개키
+
+### 정리
+- 서버는 공개키와 개인키를 가지며, 이 공개키는 아직 CA의 싸인을 받지 못한 상태이므로 csr이다.
+- 서버는 CA에 자신의 csr을 전송한다. CA는 자신의 개인키로 csr에 서명해서 서버에 전송하며, 이 서명이 담긴 공개키를 crt라 부른다.
+- 클라이언트는 서버의 crt를 수신한다. 브라우저에 탑재된 CA의 공개키로 crt에 기재된 인증 기관이 유효한지 확인한 다음, 서버의 공개키를 획득한다.
+- 클라이언트는 대칭키를 서버의 공개키로 암호화해서 서버에 전송하며, 서버는 자신의 개인키로 복호화해서 대칭키를 획득한다.
+- 그 결과로 클라이언트와 서버는 안전하게 대칭키를 주고 받았으며, 이를 통해 보안 통신을 할 수 있게 된다.
+- 참고자료: https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/learn/lecture/14296090#questions
+![certificate](../../../images/certificate.png)

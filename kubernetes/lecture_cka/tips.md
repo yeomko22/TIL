@@ -68,3 +68,8 @@ $ grep -i static /var/lib/kubelet/config.yaml
 // staticPodPath를 알아낼 수 있음
 
 ```
+
+### kube-apiserver configureation
+```
+$ cat /etc/kubernetes/manifests/kube-apiserver.yaml
+```
