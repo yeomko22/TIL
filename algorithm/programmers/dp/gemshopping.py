@@ -4,7 +4,6 @@ def solution(gems):
     unique_gems = set(gems)
     start = 0
     c = Counter()
-    candidates = []
     answer = [0, 0]
     min_interval = 100001
     for i, gem in enumerate(gems):
