@@ -51,3 +51,18 @@ spec:
     - protocol: TCP
       port: 3306
 ```
+- from:
+    - podSelector:
+        matchLabels:
+          name: internal
+    ports:
+    - port: 8080
+      protocol: TCP
+
+- to:
+  - podSelector:
+      matchLabels:
+        name: mysql
+  ports:
+  - port: 3006
+    protocol: TCP

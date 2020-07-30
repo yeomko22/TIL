@@ -21,3 +21,16 @@ $ kubectl get pods --as dev-user
 $ kubectl api-resources
 >> 여기서 특정 리소스의 APIGROUP 확인해서 clusterrole과 clusterrolebinding을 작성 가능
 ```
+
+### 현재 context 확인하기
+```bash
+$ kubectl config view | grep current
+```
+
+### kubeconfig 관련 문서
+https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
+
+### 파드의 컨테이너 안에서의 사용자 확인
+```
+$ kubectl exec <파드명> -- whoami
+```
