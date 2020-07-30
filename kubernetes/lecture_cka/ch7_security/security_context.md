@@ -30,21 +30,24 @@ spec:
 labels:
   role: db
 ```
-```
-podSelector:
-  matchLabels:
-    role: db
-```
 ### Network Policy - Rules
 ```
-policyTypes:
-- Ingress
-ingress:
-- from:
-  - podSelector:
-      matchLabels:
-        name: api-pod
-  ports:
-  - protocol: TCP
-    port: 3306
+apiVersion: networking.k8s.i/v1
+kind: NetworkPolicy
+metadata:
+  name: db-policy
+spec:
+  podSelector:
+    matchLabels:
+      role: db
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          name: api-pod
+    ports:
+    - protocol: TCP
+      port: 3306
 ```

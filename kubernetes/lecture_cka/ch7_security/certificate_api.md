@@ -96,6 +96,8 @@ context:
   user: <USRE>
   namespace: <NAMESPACE>
 ```
+- certificate를 config에 기입해줄 때에는 full path를 집어넣어준다.
+
 
 
 
