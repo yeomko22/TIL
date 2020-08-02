@@ -35,6 +35,70 @@ https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-mul
 $ kubectl exec <파드명> -- whoami
 ```
 
+### 현재 네임 스페이스 변경
+```bash
+$ kubectl config set-context --current --namespace=<원하는 네임스페이스> 
+```
+
+### 파일을 못찾는 에러
+- 볼륨이 잘못 지정되어 있을 수 있다.
+
+### 워커 노드 장애
+- kubectl describe node <노드 이름>
+- top, df -h 
+- service kubelet status
+- sudo journalctl -u kubelet
+- openssl x509 -in /var/lib/kubelet/worker-1.crt -text
+
+### 워커 노드 장애 시 조치
+1. 워커 노드 접속
+2. kubelet 서비스 상태 확인
+```bash
+$ service kubelet status
+혹은
+$ journalctl -u kubelet -f
+```
+3. kubelet 재시작
+```bash
+$ service kubelet start 
+```
+
+### 워커 노드 kubelet 설정 변경
+- /var/lib/kubelet/config.yaml 파일이 위치, 여기서 설정 변경이 가능
+- /etc/kubernetes/kubelet.conf 여기서도 마스터 노드 IP와 포트 정보 등을 수정 가능.
+- 만일 kubelet 서비스 자체가 먹통이면 yaml 파일의 문제, 서비스 자체는 뜨는데 마스터 노드와 통신을 못한다면 conf 파일 문제를 의심해 볼 수 있다.
+
+### web app frontend
+1. curl를 때려서 프런트엔드에 접속해보아라.
+2. 만일 동작하지 않는다면 해당 파드에 달려있는 서비스가 제대로 동작중인지, 엔드포인트가 제대로 설정되어 있는지를 보아라. 라벨이 안맞을 수 있다.
+3. 그 다음 파드를 보아라. 파드가 restarts를 반복했다면 describe와 logs 명령어로 상태를 확인해보아라.
+
+### 주요 troubleshooting 지점
+- 서비스 라벨 매핑
+- 서비스 포트 매핑
+- 디비 계정 잘못 기입
+- 디비 포트 잘못 기입
+
+### 컨트롤 플레인 트러블 슛
+- 노드 상태 확인
+- kube-system 네임 스페이스의 파드 상태 확인
+- 서비스 상태 확인
+```bash
+$ service kube-apiserver status
+$ service kube-controller-manager status
+$ service kube-scheduler status
+```
+- 워커 노드의 kubelet 상태 확인하기 
+```bash
+$ service kubelet status
+$ service kube-proxy status
+```
+- kube-apiserver 로그 확인
+```bash
+$ kubectl logs kube-apiserver -n kube-system
+$ sudo journalctl -u kube-apiserver 
+```
+
 ### 인터넷 접속 시에 기본 게이트웨이 확인하기
 ```bash
 $ ip route show default 
