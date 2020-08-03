@@ -129,3 +129,25 @@ $ ls /etc/cni/net.d/
 ### 컨테이너 시작 시에 실행되는 weave 플러그인의 바이너리 파일 이름은?
 ![weave_plugin](../../../images/weave_plugin.png)
 - type 아래에 설정된 weave-net이 실행된다.
+
+### 워커 노드에서 static pod 생성하기
+1. 워커 노드 접속
+2. systemctl status kubelet 명령어로 kubelet 상태 확인 및 config 파일 위치 확인 (/var/lib/kubelet/config.yaml)
+3. config 파일 내부에 static pod 폴더 경로가 들어있다.
+4. 해당 폴더 내에 yaml 파일 생성해주면 끝
+
+### 클러스터 내부에서 특정 서비스가 접근 가능한지 확인하는 방법
+```bash
+$ nc -z -v -w 2 <service 명> <port 번호>
+```
+
+### static 파드 구별법
+- 파드 뒤에 -<노드 이름>이 붙으면 스태틱 파드이다.
+
+### multiple scheduler
+- 반드시 문서 보고 따라할 것. 그냥 내멋대로 하면 절대로 안됨
+- /etc/kubernetes/manifest 안에 들어있는 yaml을 복사한 뒤에 아래 값들을 반드시 추가해 줄 것
+```bash
+- --leader-elect=false
+- --scheduler-name=my-scheduler 
+```
