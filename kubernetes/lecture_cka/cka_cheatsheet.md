@@ -151,3 +151,7 @@ $ nc -z -v -w 2 <service 명> <port 번호>
 - --leader-elect=false
 - --scheduler-name=my-scheduler 
 ```
+
+### 내 취약점
+- upgrade 시에 drain
+- deployment record 남기기
