@@ -5,13 +5,18 @@
 1. 매일 학습한 내용을 기록한다.
 2. 1을 잘 지킨다.
 
-### TIL을 통해 공부한 내용들
-- Ansible 기초 강의 완강
+### TIL을 통해 공부한 서적
 - 쉽게 배우는 네트워크 완독 및 내용 정리
-- docker and kubernetes 강의 완강
 - 쉽게 배우는 운영체제 핵심개념 위주 내용 정리
 - 쿠버네티스 입문 완독 및 정리
 - 5G 이동통신 비즈니스 완독 및 정리
 - 가장 빨리 만나는 go 언어 완독 및 정리
 - 5G 네트워크 첫 걸음 핵심 개념 위주 내용 정리
+
+### TIL을 통해 수강한 강의
+- Ansible 기초 강의 완강
+- docker and kubernetes 강의 완강
 - CKA 강의 완강 및 정리
+
+### TIL을 통해 취득한 자격증
+- Certified Kubernetes Administrator(2020. 8.)
