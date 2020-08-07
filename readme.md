@@ -19,4 +19,4 @@
 - CKA 강의 완강 및 정리
 
 ### TIL을 통해 취득한 자격증
-- Certified Kubernetes Administrator(2020. 8.)
+- Certified Kubernetes Administrator(2020. 8. 6.)
