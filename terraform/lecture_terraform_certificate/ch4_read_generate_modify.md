@@ -52,3 +52,8 @@ resource "aws_security_group" "allow_tls" {
 - 고정 값을 할당하지 말고 변수를 만들어서 할당하라.
 - 고정 값을 할당할 경우, 만약 ip가 변경되는 등의 상황에 일일이 코드를 수정해주어야 하는 불편함이 있다.
 - 별도의 variable.tf 파일을 만들어주고, 변수 값을 모아준다.
+
+### Terraform Variable 할당 방법
+- variables.tf 파일을 만들고 여기에 default 값을 설정
+- 콘솔에서 직접 입력해서 설정
+- 프러덕션 환경에서는 variables.tf 파일에 필요한 변수들을 다 적어주고 기본값들은 terraform.tfvars 파일에 모아준다.
