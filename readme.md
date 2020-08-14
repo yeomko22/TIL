@@ -17,7 +17,7 @@
 - Ansible 기초 강의 완강
 - docker and kubernetes 강의 완강
 - CKA, CKAD 강의 완강 및 정리
-- Terraform 기초 강의 완강
+- Terraform 기초, certification 강의 완강
 
 ### TIL을 통해 취득한 자격증
 - Certified Kubernetes Administrator(2020. 8. 6.)
