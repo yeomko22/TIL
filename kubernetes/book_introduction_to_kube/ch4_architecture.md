@@ -4,7 +4,7 @@
 - 평소에는 리더 마스터 1대만 운영하고, 리더 마스터 장애 시 다른 마스터가 리더가 됨
 
 ### 마스터 노드 통신 구조
-![kube_archi](../../../images/kube_architecture.png)
+![kube_archi](../../images/kube_architecture.png)
 - 마스터
   - kube-apiserver를 중심으로 모든 통신이 이루어짐
   - etcd에는 kube-apiserver만 접근이 가능
