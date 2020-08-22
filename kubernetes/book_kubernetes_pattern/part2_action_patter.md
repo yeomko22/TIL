@@ -105,5 +105,22 @@ spec:
   - name:
     valueFrom:
       fieldRef:
-        fieldPath:
+        fieldPath: status.podIP
+  - name:
+    valueFrom:
+      resourceFieldRef:
+        containerName:
+        resource: limits.memory
 ```
+- fieldRef 필드 아래에 status.podIP 값으로 자기 자신의 정보를 넣는다.
+- resourceFieldRef 값을 활용해 특정 컨테이너의 정보를 넣는다.
+```
+volumes:
+- name: pod-info
+  downwardAPI:
+    items:
+    - path: matchLabels
+      fieldRef:
+        fieldPath: metadata.labels
+```
+- volume을 사용해서 downwardAPI를 사용할 수도 있다.
