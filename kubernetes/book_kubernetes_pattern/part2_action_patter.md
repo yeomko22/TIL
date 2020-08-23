@@ -1,5 +1,5 @@
-## 7-8장 batchjob, cronjob
-### 문제
+## 2부 행동패턴
+### 7-8장 batchjob, cronjob
 - batch job 패턴은 독립된 원자 작업단위 관리 시에 적합하다.
 - 파드는 기본적으로 장기 실행 프로세스이다. 
 - 그러나 일정 시간의 작업단위를 안정적으로 실행한 후 컨테이너를 종료하는 것도 필요하며, 이때 job을 사용한다.
@@ -105,5 +105,22 @@ spec:
   - name:
     valueFrom:
       fieldRef:
-        fieldPath:
+        fieldPath: status.podIP
+  - name:
+    valueFrom:
+      resourceFieldRef:
+        containerName:
+        resource: limits.memory
 ```
+- fieldRef 필드 아래에 status.podIP 값으로 자기 자신의 정보를 넣는다.
+- resourceFieldRef 값을 활용해 특정 컨테이너의 정보를 넣는다.
+```
+volumes:
+- name: pod-info
+  downwardAPI:
+    items:
+    - path: matchLabels
+      fieldRef:
+        fieldPath: metadata.labels
+```
+- volume을 사용해서 downwardAPI를 사용할 수도 있다.
