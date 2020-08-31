@@ -91,3 +91,27 @@ private FortuneService fortuneService;
 @Value("${foo.email}")
 private String email;
 ```
+
+###  Scope Anntation
+- @Scope은 bean의 lifecycle을 나타낸다.
+- default는 singleton이며, 다른 유형으로 설정해주고 싶다면 @Scope 안에 원하는 유형을 넣어주면 된다.
+```
+@Component
+@Scope("prototype")
+public class TennisCoach implements Coach {...}
+```
+
+### Lifecycle Annotation
+- init-method와 destroy-method 사용이 가능하며, 역시 Annotation으로 표현 가능하다.
+- @PostConstruct, @PreDestroy 두 메서드가 사용 가능하다.
+- custom 생성자, 파괴자 위에 어노테이션을 붙여주어 구현 가능
+```
+@Component
+public class TennisCoach implements Coach {
+  @PostConstruct
+  public void doMyStartupStuff() {...}
+
+  @PreDestroy
+  public void doMyCleanupStuff() {...}
+}
+```
