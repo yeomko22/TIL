@@ -29,3 +29,5 @@
  destroy-method="custom destroy method"
 </bean>
 ```
+- 그러므로 bean class 파일에서 생성자, 파괴자로 쓸 메서드를 추가한 다음, Spring configfile에 추가해주면 개꿀딱
+- prototype bean의 경우, 소멸될 때 destroy method를 호출하지 않는다.
