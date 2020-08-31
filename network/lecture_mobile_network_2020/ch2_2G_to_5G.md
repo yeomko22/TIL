@@ -29,3 +29,4 @@
 - eMBB(enhanced mobile broadband): 대역폭의 확대로 초고속 전송
 - URLLC(Ultra Reliable Low Latency Communication): 고신뢰 저지연 통신
 - mMTC(Massive Machine Type Communication): 대량 연결
+- 고주파수 대역으로 갈 수록 안테나 길이를 줄일 수 있다. 이를 통해서 대량의 안테나를 집적할 수 있게 된 것을 massive MIMO라 부른다.
