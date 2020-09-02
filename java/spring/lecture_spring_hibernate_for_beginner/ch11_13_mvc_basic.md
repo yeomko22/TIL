@@ -40,3 +40,50 @@ public class HomeController {
   }
 }
 ```
+
+### Model 만들기
+- 컨트롤러를 통해서 모델에 데이터를 집어넣는다.
+- 이 모델을 view page(JSP)에서 읽어와서 화면을 구성할 수 있다.
+```
+@RequestMapping("/processFormVersionTwo")
+public String useModel(HttpServletRequest request, Model model) {
+  String theName = request.getParameter("studentName");
+  theName = theName.toUpperCase();
+  String result = "Yo! " + theName;
+  List<Strudent> theStudentList = ...
+  model.addAttribute("message", result);
+  model.addAttribute("students", theStudentList);
+  return "helloworld";
+}
+```
+- model에 addAttribute 함수를 이용해서 데이터를 추가할 수 있다.
+```
+<body>
+The message: ${message}
+</body>
+```
+- JSP에서는 model에 담겨져 있는 데이터를 그냥 $기호로 접근해서 사용할 수 있다.
+
+### Binding Request Params
+- form data 읽을 떄 Spring annotation을 사용 가능
+```
+@RequestMapping("/processFormVersionTwo")
+public String letsShoutDude(@RequestParam("studentName") String theName, Model model) {
+  ...
+}
+```
+- 파라미터 단에 @RequestParam 어노테이션을 사용해서 파라미터에 담긴 변수를 곧바로 가져와서 사용할 수 있다.
+
+### RequestMapping을 Controller level에 추가하기
+- 서로 다른 컨트롤러에 동일한 RequestMapping이 적용할  경우 Ambiguous mapping 에러가 발생한다.
+- 이를 피하기 위해서는 @Controller 아래에 @RequestMapping을 추가해준다.
+```
+@Controller
+@RequestMapping("/hello")
+public class SillyController {
+	@RequestMapping("/showForm")
+	public String displayTheForm() {
+		return "silly";
+	}
+}
+```
