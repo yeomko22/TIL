@@ -68,3 +68,16 @@ private String postalCode;
 ```
 typeMismatch.customer.freePasses=Invalid number
 ```
+
+### Custom Validation
+- 예를들어 특정 문자열로 시작해야한다는 validation이 있을 수 있다.
+- CustomAnnotation을 사용해서 구현할 수 있다. ex) @CourseCode
+```
+@Constraint(validateBy = CourseCodeConstrrinatValidator.class)
+@Target({ElemetType.METHOD, ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface CourseCode {
+  public String value() default "LUV";
+  pbulic String message() default "must startt with LUV";
+}
+```
