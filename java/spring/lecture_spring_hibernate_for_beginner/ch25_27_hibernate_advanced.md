@@ -83,3 +83,4 @@ public class Student {
 ```
 - 그리고 이러한 양방향 Many to Many 관계에서는 delete cascade를 적용하면 안된다.
 - 이렇게 두 엔티티 클래스에 관계만 설정해주면 JoinTable에 둘 사이 레코드 매핑을 나타내는 레코드가 자동으로 저장된다.
+
