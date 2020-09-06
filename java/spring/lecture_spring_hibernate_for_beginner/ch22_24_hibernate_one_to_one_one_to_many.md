@@ -79,3 +79,62 @@ finally {
 ```
 - catch에서는 null pointer exception을 잡아낸다.
 - finally에서는 factory와 session을 닫아주어 memory leak을 방지한다.
+
+### One to many
+- one to many 관계에서 cascade delete는 조심스럽게 구현해야한다.
+```
+@Entity
+@Table(name="instructor")
+public class instructor {
+  @OneToMany(mappedBy="instructor", 
+             casacde={CascadeType.PERSIST, CascadeType.MERGE, 
+                      CascadeType.DETACH, CascadeType.REFRESH})
+  private List<Course> courses;
+}
+```
+- One에 해당하는 Entity에서는 one to many로 foreign key로 지정할 필드 값을 명시한다. 
+- 즉, Course Entity는 instructor라는 필드 값으로 instructor를 참조한다.
+```
+@Entity
+@Table(name="Course")
+public class Course {
+  @ManyToOne(casacde={CascadeType.PERSIST, CascadeType.MERGE, 
+                      CascadeType.DETACH, CascadeType.REFRESH})
+  @JoinColumn(name="instructor_id")
+  private Instructor instructor;
+}
+```
+- Many에 해당하는 Entity에서는 ManyToOne 태그와 JoinColumn으로 참조할 대상의 필드 값을 명시
+
+```
+public class Instructor {
+  public void add(Course tempCourse) {
+    if (courses == null) {
+      courses = new ArrayList<>();
+    }
+    courses.add(tempCourse);
+    tempCourse.setInstructor(this);
+  }
+}
+```
+- bi-directional link를 걸어주어야 한다.
+- 새로운 course를 추가할 때, 반드시 tempCourse.setInstructor 함수를 통해서 참조 관계를 걸어주어야 한다.
+```
+session.beginTransaction();
+int theId = 1;
+Instructor tmpInstructor = session.get(Instructor.class, theId);
+Course tempCourse1 = new Course("Air Guitar - The Ultimate Guide");
+Course tempCourse2 = new Course("Pinball Masterclass");
+
+tmpInstructor.add(tempCourse1);
+tmpInstructor.add(tempCourse2);
+
+session.save(tempCourse1);
+session.save(tempCourse2);
+
+// end a transaction
+session.getTransaction().commit();
+```
+- 여기서 주목해야할 라인은 tmpInstructor.add(tempCourse1)과 그 아랫 라인이다.
+- 참조하는 대상에 Course를 추가해주는 add 함수를 호출한다. add 함수는 그 안에서 다시 Course 객체의 setInstructor 함수를 호출한다.
+- 이를 통해서 두 객체 간의 bi-directional한 관계를 형성해 줄 수 있으며, 해당 키 값을 자동으로 저장한다.
