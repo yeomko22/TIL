@@ -52,3 +52,4 @@ public class CustomerDAOImpl implements CustomerDAO {
 }
 ```
 - @Autowired를 사용해서 스프링 설정 파일에 등록된 sessionFactory를 자동으로 찾아서 바인딩 한다.
+
