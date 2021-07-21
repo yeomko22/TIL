@@ -1,4 +1,4 @@
-### pv 사용량 확인
-- 현재는 pv를 사용하고 있는 pod 중 하나에 접속하여 df -h 명령어로 확인한다.
-- 검색 결과 prometheus를 사용하면 해결이 된다고 하니, 프로메테우스 실습을 해보면서 익히도록 하자
-
+## pvc storage 요구량 확인하기
+~~~bahs
+$ k get pvc -o custom-columns='name:{.metadata.name},storage:{.spec.resources.requests.storage}' -n kubeflow
+~~~
